@@ -1,0 +1,15 @@
+.user-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px;
+}
+
+.user-card > h1 {
+    font-size: 28px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 25px;
+}

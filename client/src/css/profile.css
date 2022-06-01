@@ -1,0 +1,15 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile > h1 {
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.profile > h3 {
+    margin: 10px;
+    text-align: center;    
+}
