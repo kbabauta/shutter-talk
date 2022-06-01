@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend node server.js",
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd client && npm start\"",
+    "start": "cd backend && node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build && cd ../ && cd backend && npm install"
   },
   "engines": {
