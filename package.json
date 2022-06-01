@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd backend node server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "dev": "concurrently \"cd backend && npm start\" \"cd client && npm start\"",
+    "heroku-postbuild": "cd client && npm install && npm run build && cd ../ && cd backend && npm install"
   },
   "engines": {
-      "node": "14.17.6"
+    "node": "14.17.6"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/kbabauta/shutter-talk/issues"
   },
-  "homepage": "https://github.com/kbabauta/shutter-talk#readme"
+  "homepage": "https://github.com/kbabauta/shutter-talk#readme",
+  "dependencies": {
+    "concurrently": "^7.2.1"
+  }
 }
