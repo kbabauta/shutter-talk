@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+const path = require("path")
+
+
 require('dotenv').config()
 
 const morgan = require('morgan')
@@ -25,8 +28,18 @@ app.use((err, req, res, next)=> {
         res.status(err.status)
     }
     return res.send({ errMsg: err.message })
-}) 
+})
 
-app.listen(9000, () => {
-    console.log("Server is running on local port 9000")
+app.use(express.static(path.join(__dirname, "client", "build", "index.html")))
+
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+})
+
+
+const port = process.env.PORT
+
+app.listen(port, () => {
+    console.log(`Server is running on local port ${port}`)
 })
