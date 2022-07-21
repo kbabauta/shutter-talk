@@ -20,7 +20,7 @@ const connectDB = async () => {
     console.log(`Connected to local server ${connection.connection.host}`)
 }
 
-connectDB().then(async() => console.log(`Connected to the server`))
+connectDB()
 
 app.use(express.json())
 app.use(morgan('dev'))
