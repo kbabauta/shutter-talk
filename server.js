@@ -30,6 +30,7 @@ app.use((err, req, res, next)=> {
     return res.send({ errMsg: err.message })
 })
 
+//Heroku Middleware
 app.use(express.static(path.join(__dirname, "client", "build", "index.html")))
 
 
