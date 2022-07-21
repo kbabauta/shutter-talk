@@ -1,26 +1,26 @@
 const express = require('express')
 const app = express()
+require('dotenv').config()
 
 const path = require("path")
 const port = process.env.PORT || 9000
+const MongoURI = process.env.MONGO_URI
 
 
-require('dotenv').config()
 
 const morgan = require('morgan')
 const {expressjwt: jwt} = require('express-jwt')
-const { default: mongoose, connection } = require('mongoose')
+const mongoose = require('mongoose')
 
 const connectDB = async () => {
-    const connection = await mongoose.connect(MONGO_URI, {
+    const connection = await mongoose.connect(MongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-
-    return mongoose
+    console.log(`Connected to local server ${connection.connection.host}`)
 }
 
-await connectDB().then(async() => console.log(`Connected to the ${connection.connection.host}`))
+connectDB()
 
 app.use(express.json())
 app.use(morgan('dev'))
