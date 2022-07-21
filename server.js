@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const morgan = require('morgan')
 const {expressjwt: jwt} = require('express-jwt')
-const { default: mongoose } = require('mongoose')
+const { default: mongoose, connection } = require('mongoose')
 
 const connectDB = async () => {
     const connection = await mongoose.connect(MONGO_URI, {
@@ -20,7 +20,7 @@ const connectDB = async () => {
     return mongoose
 }
 
-await connectDB().then(async() => console.log('Connected to the server!'))
+await connectDB().then(async() => console.log(`Connected to the ${connection.connection.host}`))
 
 app.use(express.json())
 app.use(morgan('dev'))
@@ -50,6 +50,6 @@ app.get("*", (req, res) => {
 })
 
 
-app.listen(PORT || 9000, () => {
+app.listen(port, () => {
     console.log(`Server is running on local port ${port}`)
 })
