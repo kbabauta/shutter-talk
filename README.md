@@ -1,4 +1,4 @@
-Welcome to Shutter Talk
+<h1><u>Welcome to Shutter Talk</u></h1>
 
 A forum app designed with React for like-minded photographers of all levels to discuss concepts, work, and gain insightful critcism.
 
