@@ -22,7 +22,7 @@ const connectDB = async () => {
 app.use(express.json())
 app.use(morgan('dev'))
 
-connectDB()
+await connectDB().then(async() => console.log('Connected to the server!'))
 
 app.use("/auth", require("./routes/authRouter"))
 app.use("/api", jwt({secret: process.env.SECRET, algorithms: ['HS256']}))
