@@ -11,7 +11,7 @@ const morgan = require('morgan')
 const {expressjwt: jwt} = require('express-jwt')
 
 const connectDB = async () => {
-    const connection = await mongoose.connect(Mongo_URI, {
+    const connection = await mongoose.connect(MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
