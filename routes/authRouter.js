@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 // Sign up
-authRouter.post("/signup", (req, res, next) => {
+authRouter.post("/signup", async(req, res, next) => {
     User.findOne({ username: req.body.username.toLowerCase() },
     (err, user) => {
         if(err) {
@@ -28,7 +28,7 @@ authRouter.post("/signup", (req, res, next) => {
 })
 
 // Log In
-authRouter.post("/login", (req, res, next) => {
+authRouter.post("/login", async(req, res, next) => {
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
         if(err){
             res.status(500)
