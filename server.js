@@ -50,6 +50,6 @@ app.get("*", (req, res) => {
 })
 
 
-app.listen(port, () => {
+app.listen(PORT || 9000, () => {
     console.log(`Server is running on local port ${port}`)
 })
