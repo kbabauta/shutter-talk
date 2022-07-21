@@ -9,6 +9,7 @@ require('dotenv').config()
 
 const morgan = require('morgan')
 const {expressjwt: jwt} = require('express-jwt')
+const { default: mongoose } = require('mongoose')
 
 const connectDB = async () => {
     const connection = await mongoose.connect(MONGO_URI, {
@@ -16,13 +17,15 @@ const connectDB = async () => {
         useUnifiedTopology: true
     })
 
-    console.log(`mongoDB connected: ${connection.connection.host}`)
+    return mongoose
 }
+
+await connectDB().then(async() => console.log('Connected to the server!'))
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-await connectDB().then(async() => console.log('Connected to the server!'))
+
 
 app.use("/auth", require("./routes/authRouter"))
 app.use("/api", jwt({secret: process.env.SECRET, algorithms: ['HS256']}))
