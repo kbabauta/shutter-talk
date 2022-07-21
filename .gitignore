@@ -1,3 +1,5 @@
 .env
+db-atlas.js
+.pdf
 
 *node_modules
