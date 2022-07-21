@@ -15,12 +15,11 @@ const mongoose = require('mongoose')
 const connectDB = async () => {
     const connection = await mongoose.connect(MongoURI, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
     })
-    console.log(`Connected to local server ${connection.connection.host}`)
 }
 
-connectDB()
+connectDB().then(async() => console.log(`MongoDB connected to ${port}`))
 
 app.use(express.json())
 app.use(morgan('dev'))
