@@ -10,12 +10,19 @@ require('dotenv').config()
 const morgan = require('morgan')
 const {expressjwt: jwt} = require('express-jwt')
 
-const connectDB = require('./db-atlas')
+const connectDB = async () => {
+    const connection = await mongoose.connect(Mongo_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+
+    console.log(`mongoDB connected: ${connection.connection.host}`)
+}
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-connectDB()
+// connectDB()
 
 app.use("/auth", require("./routes/authRouter"))
 app.use("/api", jwt({secret: process.env.SECRET, algorithms: ['HS256']}))
